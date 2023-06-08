@@ -1,0 +1,47 @@
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+
+type User @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  owner: String!
+  name: String
+  email: String 
+  emailVerified: Boolean 
+  image: String
+  hashedPassword: String
+  createdAt: AWSDateTime 
+  updatedAt: AWSDateTime 
+  accounts: [Account] @hasMany
+  conversations: [Conversation] @hasMany
+}
+
+type Account @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  owner: String!
+  userId: User @belongsTo
+  type: String
+  provider: String
+  providerAccountId: String
+  refresh_token: String
+  access_token: String
+  expires_at: AWSDateTime 
+  token_type: String
+  scope: String
+  id_token: String
+  session_state: String
+}
+
+type Conversation @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  owner: String!
+  userId: User @belongsTo
+  content: String!
+  messages: [Message] @hasMany
+}
+
+
+type Message @model {
+  id: ID!
+  content: String!
+  conversation: Conversation @belongsTo
+}
