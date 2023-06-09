@@ -41,17 +41,15 @@ const ModalComponent = ({isOpen, onClose, onSubmit, modalTitle, modalBody, disab
     if (!isOpen) return null;
 
     return (
-        <div className='fixed w-full h-[100vh] bg-[#cecece75] top-0 z-10 '>
+        <div className='fixed w-full h-[100vh] bg-[#53576094] top-0 z-10 '>
             {/* MODAL */}
-            <div className={`relative top-40 w-[40vw] min-h-[60vh] p-2 rounded-lg flex flex-col gap-4 m-auto
-    translate duration-300
-    ${showModal ? "translate-y-0" : "translate-y-full"} 
-    ${showModal ? "opacity-100" : "opacity-0"} 
-    ${LoginModalState.isOpen ? "bg-neutral-800" : "bg-white"}
-   
-`}>
+            <div className={`relative top-32 md:top-40 w-[90vw] md:w-[40vw] h-[450px] rounded-lg flex gap-6 flex-col m-auto shadow-xl shadow-[#0d0d0d] translate duration-300
+            ${showModal ? "translate-y-0" : "translate-y-full"} 
+            ${showModal ? "opacity-100" : "opacity-0"} 
+            ${LoginModalState.isOpen ? "bg-neutral-900" : "bg-white"}`}
+            >
                 {/* Header */}
-                <div className={`flex justify-between items-center p-4 border-b border-b-[#686868]   
+                <div className={`flex justify-between items-center p-2 border-b border-b-[#686868]   
                 ${LoginModalState.isOpen ? 'text-white' : "text-neutral-500"}`}>
                     <button
                         className=' text-xl font-bold'

@@ -13,23 +13,23 @@ const LoginModal = () => {
 
     const loginBody = (
         <>
-            <div className='flex flex-col flex-1 items-center gap-4 h-full mt-10'>
-                <input className='w-[80%] h-[40px] rounded-lg bg-neutral-700 text-white text-xl px-4' placeholder='Email' type='text' />
-                <input className='w-[80%] h-[40px] rounded-lg bg-neutral-700 text-white text-xl px-4' placeholder='Password' type='password' />
+            <div className='flex flex-col flex-1 px-6 items-center gap-3 h-full mt-5'>
+                <input className='sm:w-[90%] w-[100%] h-[40px] rounded-lg bg-neutral-700 text-white text-xl px-4' placeholder='Email' type='text' />
+                <input className='sm:w-[90%] w-[100%] h-[40px] rounded-lg bg-neutral-700 text-white text-xl px-4' placeholder='Password' type='password' />
             </div>
 
 
-            <div className='flex flex-col gap-4 mb-4 '>
+            <div className='flex flex-col gap-3 mb-4 px-6 '>
                 <button
-                    className='w-[80%] m-auto p-2 rounded-lg bg-sky-500 text-white text-xl font-bold hover:bg-sky-800'
+                    className='sm:w-[90%] w-[100%] m-auto p-2 rounded-lg bg-sky-500 text-white text-xl font-bold hover:bg-sky-800'
                 >
                     Sign In
                 </button>
 
-                <button className='w-[80%] m-auto p-2 rounded-lg bg-neutral-100 text-neutral-800 text-xl font-bold flex justify-center transition hover:bg-neutral-400'>
+                <button className='sm:w-[90%] w-[100%] m-auto p-2 rounded-lg bg-neutral-100 text-neutral-800 text-xl font-bold flex justify-center transition hover:bg-neutral-400'>
 
 
-                    <div className='flex gap-2 items-center'>
+                    <div className='flex gap-4 items-center'>
                         <FcGoogle className='inline-block' />
                         Sign In With Google
                     </div>
@@ -40,7 +40,7 @@ const LoginModal = () => {
     )
 
     const modalFooter = (
-        <div className='text-center text-md font text-neutral-200'>
+        <div className='text-center text-md font text-neutral-200 mb-6'>
             Dont have an account?
             <span
                 className='hover:underline cursor-pointer font-semibold ml-1'
@@ -48,7 +48,7 @@ const LoginModal = () => {
                     LoginModalState.closeModal()
                     RegisterModalState.openModal()
                 }}
-            >Create an account
+            >Sign Up
             </span>
 
         </div>

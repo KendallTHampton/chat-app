@@ -17,6 +17,12 @@
       },
       "auth": {
         "chatappb25e6a75": {}
+      },
+      "function": {
+        "chatapp86e9dd8a": {
+          "deploymentBucketName": "amplify-chatapp-dev-194828-deployment",
+          "s3Key": "amplify-builds/chatapp86e9dd8a-525a69556b66622b5564-build.zip"
+        }
       }
     }
   }

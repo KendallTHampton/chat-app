@@ -57,5 +57,48 @@
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
     }
+  },
+  "function": {
+    "chatapp86e9dd8a": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "chatapp"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "chatappb25e6a75"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_chatapp86e9dd8a_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "chatapp86e9dd8a"
+        }
+      ]
+    },
+    "AMPLIFY_function_chatapp86e9dd8a_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "chatapp86e9dd8a"
+        }
+      ]
+    }
   }
 }
