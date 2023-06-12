@@ -7,9 +7,3 @@
 export { default as studioTheme } from "./studioTheme";
 export { default as UserCreateForm } from "./UserCreateForm";
 export { default as UserUpdateForm } from "./UserUpdateForm";
-export { default as AccountCreateForm } from "./AccountCreateForm";
-export { default as AccountUpdateForm } from "./AccountUpdateForm";
-export { default as ConversationCreateForm } from "./ConversationCreateForm";
-export { default as ConversationUpdateForm } from "./ConversationUpdateForm";
-export { default as MessageCreateForm } from "./MessageCreateForm";
-export { default as MessageUpdateForm } from "./MessageUpdateForm";

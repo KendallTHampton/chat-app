@@ -2,113 +2,10 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateMessage = /* GraphQL */ `
-  subscription OnCreateMessage($filter: ModelSubscriptionMessageFilterInput) {
-    onCreateMessage(filter: $filter) {
-      id
-      content
-      conversation {
-        id
-        owner
-        userId {
-          id
-          owner
-          name
-          email
-          emailVerified
-          image
-          hashedPassword
-          createdAt
-          updatedAt
-        }
-        content
-        messages {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        userConversationsId
-      }
-      createdAt
-      updatedAt
-      conversationMessagesId
-    }
-  }
-`;
-export const onUpdateMessage = /* GraphQL */ `
-  subscription OnUpdateMessage($filter: ModelSubscriptionMessageFilterInput) {
-    onUpdateMessage(filter: $filter) {
-      id
-      content
-      conversation {
-        id
-        owner
-        userId {
-          id
-          owner
-          name
-          email
-          emailVerified
-          image
-          hashedPassword
-          createdAt
-          updatedAt
-        }
-        content
-        messages {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        userConversationsId
-      }
-      createdAt
-      updatedAt
-      conversationMessagesId
-    }
-  }
-`;
-export const onDeleteMessage = /* GraphQL */ `
-  subscription OnDeleteMessage($filter: ModelSubscriptionMessageFilterInput) {
-    onDeleteMessage(filter: $filter) {
-      id
-      content
-      conversation {
-        id
-        owner
-        userId {
-          id
-          owner
-          name
-          email
-          emailVerified
-          image
-          hashedPassword
-          createdAt
-          updatedAt
-        }
-        content
-        messages {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        userConversationsId
-      }
-      createdAt
-      updatedAt
-      conversationMessagesId
-    }
-  }
-`;
 export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
-  ) {
-    onCreateUser(filter: $filter, owner: $owner) {
+  subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+    onCreateUser(filter: $filter) {
       id
-      owner
       name
       email
       emailVerified
@@ -116,48 +13,53 @@ export const onCreateUser = /* GraphQL */ `
       hashedPassword
       createdAt
       updatedAt
-      accounts {
-        items {
+      account {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        user {
           id
-          owner
-          type
-          provider
-          providerAccountId
-          refresh_token
-          access_token
-          expires_at
-          token_type
-          scope
-          id_token
-          session_state
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
           createdAt
           updatedAt
-          userAccountsId
+          userAccountId
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       conversations {
         items {
           id
-          owner
-          content
+          userId
+          name
+          image
           createdAt
           updatedAt
           userConversationsId
         }
         nextToken
       }
+      userAccountId
     }
   }
 `;
 export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
-  ) {
-    onUpdateUser(filter: $filter, owner: $owner) {
+  subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+    onUpdateUser(filter: $filter) {
       id
-      owner
       name
       email
       emailVerified
@@ -165,48 +67,53 @@ export const onUpdateUser = /* GraphQL */ `
       hashedPassword
       createdAt
       updatedAt
-      accounts {
-        items {
+      account {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        user {
           id
-          owner
-          type
-          provider
-          providerAccountId
-          refresh_token
-          access_token
-          expires_at
-          token_type
-          scope
-          id_token
-          session_state
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
           createdAt
           updatedAt
-          userAccountsId
+          userAccountId
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       conversations {
         items {
           id
-          owner
-          content
+          userId
+          name
+          image
           createdAt
           updatedAt
           userConversationsId
         }
         nextToken
       }
+      userAccountId
     }
   }
 `;
 export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
-  ) {
-    onDeleteUser(filter: $filter, owner: $owner) {
+  subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+    onDeleteUser(filter: $filter) {
       id
-      owner
       name
       email
       emailVerified
@@ -214,10 +121,76 @@ export const onDeleteUser = /* GraphQL */ `
       hashedPassword
       createdAt
       updatedAt
-      accounts {
+      account {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
+        createdAt
+        updatedAt
+      }
+      conversations {
         items {
           id
-          owner
+          userId
+          name
+          image
+          createdAt
+          updatedAt
+          userConversationsId
+        }
+        nextToken
+      }
+      userAccountId
+    }
+  }
+`;
+export const onCreateAccount = /* GraphQL */ `
+  subscription OnCreateAccount($filter: ModelSubscriptionAccountFilterInput) {
+    onCreateAccount(filter: $filter) {
+      id
+      userId
+      type
+      provider
+      providerAccountId
+      refresh_token
+      access_token
+      expires_at
+      token_type
+      scope
+      id_token
+      session_state
+      user {
+        id
+        name
+        email
+        emailVerified
+        image
+        hashedPassword
+        createdAt
+        updatedAt
+        account {
+          id
+          userId
           type
           provider
           providerAccountId
@@ -230,90 +203,22 @@ export const onDeleteUser = /* GraphQL */ `
           session_state
           createdAt
           updatedAt
-          userAccountsId
-        }
-        nextToken
-      }
-      conversations {
-        items {
-          id
-          owner
-          content
-          createdAt
-          updatedAt
-          userConversationsId
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const onCreateAccount = /* GraphQL */ `
-  subscription OnCreateAccount(
-    $filter: ModelSubscriptionAccountFilterInput
-    $owner: String
-  ) {
-    onCreateAccount(filter: $filter, owner: $owner) {
-      id
-      owner
-      userId {
-        id
-        owner
-        name
-        email
-        emailVerified
-        image
-        hashedPassword
-        createdAt
-        updatedAt
-        accounts {
-          nextToken
         }
         conversations {
           nextToken
         }
+        userAccountId
       }
-      type
-      provider
-      providerAccountId
-      refresh_token
-      access_token
-      expires_at
-      token_type
-      scope
-      id_token
-      session_state
       createdAt
       updatedAt
-      userAccountsId
     }
   }
 `;
 export const onUpdateAccount = /* GraphQL */ `
-  subscription OnUpdateAccount(
-    $filter: ModelSubscriptionAccountFilterInput
-    $owner: String
-  ) {
-    onUpdateAccount(filter: $filter, owner: $owner) {
+  subscription OnUpdateAccount($filter: ModelSubscriptionAccountFilterInput) {
+    onUpdateAccount(filter: $filter) {
       id
-      owner
-      userId {
-        id
-        owner
-        name
-        email
-        emailVerified
-        image
-        hashedPassword
-        createdAt
-        updatedAt
-        accounts {
-          nextToken
-        }
-        conversations {
-          nextToken
-        }
-      }
+      userId
       type
       provider
       providerAccountId
@@ -324,37 +229,46 @@ export const onUpdateAccount = /* GraphQL */ `
       scope
       id_token
       session_state
+      user {
+        id
+        name
+        email
+        emailVerified
+        image
+        hashedPassword
+        createdAt
+        updatedAt
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
+        }
+        conversations {
+          nextToken
+        }
+        userAccountId
+      }
       createdAt
       updatedAt
-      userAccountsId
     }
   }
 `;
 export const onDeleteAccount = /* GraphQL */ `
-  subscription OnDeleteAccount(
-    $filter: ModelSubscriptionAccountFilterInput
-    $owner: String
-  ) {
-    onDeleteAccount(filter: $filter, owner: $owner) {
+  subscription OnDeleteAccount($filter: ModelSubscriptionAccountFilterInput) {
+    onDeleteAccount(filter: $filter) {
       id
-      owner
-      userId {
-        id
-        owner
-        name
-        email
-        emailVerified
-        image
-        hashedPassword
-        createdAt
-        updatedAt
-        accounts {
-          nextToken
-        }
-        conversations {
-          nextToken
-        }
-      }
+      userId
       type
       provider
       providerAccountId
@@ -365,23 +279,63 @@ export const onDeleteAccount = /* GraphQL */ `
       scope
       id_token
       session_state
+      user {
+        id
+        name
+        email
+        emailVerified
+        image
+        hashedPassword
+        createdAt
+        updatedAt
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
+        }
+        conversations {
+          nextToken
+        }
+        userAccountId
+      }
       createdAt
       updatedAt
-      userAccountsId
     }
   }
 `;
 export const onCreateConversation = /* GraphQL */ `
   subscription OnCreateConversation(
     $filter: ModelSubscriptionConversationFilterInput
-    $owner: String
   ) {
-    onCreateConversation(filter: $filter, owner: $owner) {
+    onCreateConversation(filter: $filter) {
       id
-      owner
-      userId {
+      userId
+      name
+      image
+      messages {
+        items {
+          id
+          conversationId
+          content
+          createdAt
+          updatedAt
+          conversationMessagesId
+        }
+        nextToken
+      }
+      user {
         id
-        owner
         name
         email
         emailVerified
@@ -389,23 +343,26 @@ export const onCreateConversation = /* GraphQL */ `
         hashedPassword
         createdAt
         updatedAt
-        accounts {
-          nextToken
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
         }
         conversations {
           nextToken
         }
-      }
-      content
-      messages {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          conversationMessagesId
-        }
-        nextToken
+        userAccountId
       }
       createdAt
       updatedAt
@@ -416,14 +373,25 @@ export const onCreateConversation = /* GraphQL */ `
 export const onUpdateConversation = /* GraphQL */ `
   subscription OnUpdateConversation(
     $filter: ModelSubscriptionConversationFilterInput
-    $owner: String
   ) {
-    onUpdateConversation(filter: $filter, owner: $owner) {
+    onUpdateConversation(filter: $filter) {
       id
-      owner
-      userId {
+      userId
+      name
+      image
+      messages {
+        items {
+          id
+          conversationId
+          content
+          createdAt
+          updatedAt
+          conversationMessagesId
+        }
+        nextToken
+      }
+      user {
         id
-        owner
         name
         email
         emailVerified
@@ -431,23 +399,26 @@ export const onUpdateConversation = /* GraphQL */ `
         hashedPassword
         createdAt
         updatedAt
-        accounts {
-          nextToken
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
         }
         conversations {
           nextToken
         }
-      }
-      content
-      messages {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          conversationMessagesId
-        }
-        nextToken
+        userAccountId
       }
       createdAt
       updatedAt
@@ -458,32 +429,16 @@ export const onUpdateConversation = /* GraphQL */ `
 export const onDeleteConversation = /* GraphQL */ `
   subscription OnDeleteConversation(
     $filter: ModelSubscriptionConversationFilterInput
-    $owner: String
   ) {
-    onDeleteConversation(filter: $filter, owner: $owner) {
+    onDeleteConversation(filter: $filter) {
       id
-      owner
-      userId {
-        id
-        owner
-        name
-        email
-        emailVerified
-        image
-        hashedPassword
-        createdAt
-        updatedAt
-        accounts {
-          nextToken
-        }
-        conversations {
-          nextToken
-        }
-      }
-      content
+      userId
+      name
+      image
       messages {
         items {
           id
+          conversationId
           content
           createdAt
           updatedAt
@@ -491,9 +446,144 @@ export const onDeleteConversation = /* GraphQL */ `
         }
         nextToken
       }
+      user {
+        id
+        name
+        email
+        emailVerified
+        image
+        hashedPassword
+        createdAt
+        updatedAt
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
+        }
+        conversations {
+          nextToken
+        }
+        userAccountId
+      }
       createdAt
       updatedAt
       userConversationsId
+    }
+  }
+`;
+export const onCreateMessage = /* GraphQL */ `
+  subscription OnCreateMessage($filter: ModelSubscriptionMessageFilterInput) {
+    onCreateMessage(filter: $filter) {
+      id
+      conversationId
+      content
+      createdAt
+      conversation {
+        id
+        userId
+        name
+        image
+        messages {
+          nextToken
+        }
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
+        createdAt
+        updatedAt
+        userConversationsId
+      }
+      updatedAt
+      conversationMessagesId
+    }
+  }
+`;
+export const onUpdateMessage = /* GraphQL */ `
+  subscription OnUpdateMessage($filter: ModelSubscriptionMessageFilterInput) {
+    onUpdateMessage(filter: $filter) {
+      id
+      conversationId
+      content
+      createdAt
+      conversation {
+        id
+        userId
+        name
+        image
+        messages {
+          nextToken
+        }
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
+        createdAt
+        updatedAt
+        userConversationsId
+      }
+      updatedAt
+      conversationMessagesId
+    }
+  }
+`;
+export const onDeleteMessage = /* GraphQL */ `
+  subscription OnDeleteMessage($filter: ModelSubscriptionMessageFilterInput) {
+    onDeleteMessage(filter: $filter) {
+      id
+      conversationId
+      content
+      createdAt
+      conversation {
+        id
+        userId
+        name
+        image
+        messages {
+          nextToken
+        }
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
+        createdAt
+        updatedAt
+        userConversationsId
+      }
+      updatedAt
+      conversationMessagesId
     }
   }
 `;

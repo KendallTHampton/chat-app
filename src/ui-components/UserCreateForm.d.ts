@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
     hasError: boolean;
@@ -13,20 +13,18 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type UserCreateFormInputValues = {
-    owner?: string;
     name?: string;
     email?: string;
-    emailVerified?: boolean;
+    emailVerified?: string;
     image?: string;
     hashedPassword?: string;
     createdAt?: string;
     updatedAt?: string;
 };
 export declare type UserCreateFormValidationValues = {
-    owner?: ValidationFunction<string>;
     name?: ValidationFunction<string>;
     email?: ValidationFunction<string>;
-    emailVerified?: ValidationFunction<boolean>;
+    emailVerified?: ValidationFunction<string>;
     image?: ValidationFunction<string>;
     hashedPassword?: ValidationFunction<string>;
     createdAt?: ValidationFunction<string>;
@@ -35,10 +33,9 @@ export declare type UserCreateFormValidationValues = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserCreateFormOverridesProps = {
     UserCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    owner?: PrimitiveOverrideProps<TextFieldProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
     email?: PrimitiveOverrideProps<TextFieldProps>;
-    emailVerified?: PrimitiveOverrideProps<SwitchFieldProps>;
+    emailVerified?: PrimitiveOverrideProps<TextFieldProps>;
     image?: PrimitiveOverrideProps<TextFieldProps>;
     hashedPassword?: PrimitiveOverrideProps<TextFieldProps>;
     createdAt?: PrimitiveOverrideProps<TextFieldProps>;

@@ -2,114 +2,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createMessage = /* GraphQL */ `
-  mutation CreateMessage(
-    $input: CreateMessageInput!
-    $condition: ModelMessageConditionInput
-  ) {
-    createMessage(input: $input, condition: $condition) {
-      id
-      content
-      conversation {
-        id
-        owner
-        userId {
-          id
-          owner
-          name
-          email
-          emailVerified
-          image
-          hashedPassword
-          createdAt
-          updatedAt
-        }
-        content
-        messages {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        userConversationsId
-      }
-      createdAt
-      updatedAt
-      conversationMessagesId
-    }
-  }
-`;
-export const updateMessage = /* GraphQL */ `
-  mutation UpdateMessage(
-    $input: UpdateMessageInput!
-    $condition: ModelMessageConditionInput
-  ) {
-    updateMessage(input: $input, condition: $condition) {
-      id
-      content
-      conversation {
-        id
-        owner
-        userId {
-          id
-          owner
-          name
-          email
-          emailVerified
-          image
-          hashedPassword
-          createdAt
-          updatedAt
-        }
-        content
-        messages {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        userConversationsId
-      }
-      createdAt
-      updatedAt
-      conversationMessagesId
-    }
-  }
-`;
-export const deleteMessage = /* GraphQL */ `
-  mutation DeleteMessage(
-    $input: DeleteMessageInput!
-    $condition: ModelMessageConditionInput
-  ) {
-    deleteMessage(input: $input, condition: $condition) {
-      id
-      content
-      conversation {
-        id
-        owner
-        userId {
-          id
-          owner
-          name
-          email
-          emailVerified
-          image
-          hashedPassword
-          createdAt
-          updatedAt
-        }
-        content
-        messages {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        userConversationsId
-      }
-      createdAt
-      updatedAt
-      conversationMessagesId
-    }
-  }
-`;
 export const createUser = /* GraphQL */ `
   mutation CreateUser(
     $input: CreateUserInput!
@@ -117,7 +9,6 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
-      owner
       name
       email
       emailVerified
@@ -125,37 +16,46 @@ export const createUser = /* GraphQL */ `
       hashedPassword
       createdAt
       updatedAt
-      accounts {
-        items {
+      account {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        user {
           id
-          owner
-          type
-          provider
-          providerAccountId
-          refresh_token
-          access_token
-          expires_at
-          token_type
-          scope
-          id_token
-          session_state
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
           createdAt
           updatedAt
-          userAccountsId
+          userAccountId
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       conversations {
         items {
           id
-          owner
-          content
+          userId
+          name
+          image
           createdAt
           updatedAt
           userConversationsId
         }
         nextToken
       }
+      userAccountId
     }
   }
 `;
@@ -166,7 +66,6 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
-      owner
       name
       email
       emailVerified
@@ -174,37 +73,46 @@ export const updateUser = /* GraphQL */ `
       hashedPassword
       createdAt
       updatedAt
-      accounts {
-        items {
+      account {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        user {
           id
-          owner
-          type
-          provider
-          providerAccountId
-          refresh_token
-          access_token
-          expires_at
-          token_type
-          scope
-          id_token
-          session_state
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
           createdAt
           updatedAt
-          userAccountsId
+          userAccountId
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       conversations {
         items {
           id
-          owner
-          content
+          userId
+          name
+          image
           createdAt
           updatedAt
           userConversationsId
         }
         nextToken
       }
+      userAccountId
     }
   }
 `;
@@ -215,7 +123,6 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
-      owner
       name
       email
       emailVerified
@@ -223,10 +130,79 @@ export const deleteUser = /* GraphQL */ `
       hashedPassword
       createdAt
       updatedAt
-      accounts {
+      account {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
+        createdAt
+        updatedAt
+      }
+      conversations {
         items {
           id
-          owner
+          userId
+          name
+          image
+          createdAt
+          updatedAt
+          userConversationsId
+        }
+        nextToken
+      }
+      userAccountId
+    }
+  }
+`;
+export const createAccount = /* GraphQL */ `
+  mutation CreateAccount(
+    $input: CreateAccountInput!
+    $condition: ModelAccountConditionInput
+  ) {
+    createAccount(input: $input, condition: $condition) {
+      id
+      userId
+      type
+      provider
+      providerAccountId
+      refresh_token
+      access_token
+      expires_at
+      token_type
+      scope
+      id_token
+      session_state
+      user {
+        id
+        name
+        email
+        emailVerified
+        image
+        hashedPassword
+        createdAt
+        updatedAt
+        account {
+          id
+          userId
           type
           provider
           providerAccountId
@@ -239,62 +215,14 @@ export const deleteUser = /* GraphQL */ `
           session_state
           createdAt
           updatedAt
-          userAccountsId
-        }
-        nextToken
-      }
-      conversations {
-        items {
-          id
-          owner
-          content
-          createdAt
-          updatedAt
-          userConversationsId
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const createAccount = /* GraphQL */ `
-  mutation CreateAccount(
-    $input: CreateAccountInput!
-    $condition: ModelAccountConditionInput
-  ) {
-    createAccount(input: $input, condition: $condition) {
-      id
-      owner
-      userId {
-        id
-        owner
-        name
-        email
-        emailVerified
-        image
-        hashedPassword
-        createdAt
-        updatedAt
-        accounts {
-          nextToken
         }
         conversations {
           nextToken
         }
+        userAccountId
       }
-      type
-      provider
-      providerAccountId
-      refresh_token
-      access_token
-      expires_at
-      token_type
-      scope
-      id_token
-      session_state
       createdAt
       updatedAt
-      userAccountsId
     }
   }
 `;
@@ -305,24 +233,7 @@ export const updateAccount = /* GraphQL */ `
   ) {
     updateAccount(input: $input, condition: $condition) {
       id
-      owner
-      userId {
-        id
-        owner
-        name
-        email
-        emailVerified
-        image
-        hashedPassword
-        createdAt
-        updatedAt
-        accounts {
-          nextToken
-        }
-        conversations {
-          nextToken
-        }
-      }
+      userId
       type
       provider
       providerAccountId
@@ -333,9 +244,38 @@ export const updateAccount = /* GraphQL */ `
       scope
       id_token
       session_state
+      user {
+        id
+        name
+        email
+        emailVerified
+        image
+        hashedPassword
+        createdAt
+        updatedAt
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
+        }
+        conversations {
+          nextToken
+        }
+        userAccountId
+      }
       createdAt
       updatedAt
-      userAccountsId
     }
   }
 `;
@@ -346,24 +286,7 @@ export const deleteAccount = /* GraphQL */ `
   ) {
     deleteAccount(input: $input, condition: $condition) {
       id
-      owner
-      userId {
-        id
-        owner
-        name
-        email
-        emailVerified
-        image
-        hashedPassword
-        createdAt
-        updatedAt
-        accounts {
-          nextToken
-        }
-        conversations {
-          nextToken
-        }
-      }
+      userId
       type
       provider
       providerAccountId
@@ -374,9 +297,38 @@ export const deleteAccount = /* GraphQL */ `
       scope
       id_token
       session_state
+      user {
+        id
+        name
+        email
+        emailVerified
+        image
+        hashedPassword
+        createdAt
+        updatedAt
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
+        }
+        conversations {
+          nextToken
+        }
+        userAccountId
+      }
       createdAt
       updatedAt
-      userAccountsId
     }
   }
 `;
@@ -387,10 +339,22 @@ export const createConversation = /* GraphQL */ `
   ) {
     createConversation(input: $input, condition: $condition) {
       id
-      owner
-      userId {
+      userId
+      name
+      image
+      messages {
+        items {
+          id
+          conversationId
+          content
+          createdAt
+          updatedAt
+          conversationMessagesId
+        }
+        nextToken
+      }
+      user {
         id
-        owner
         name
         email
         emailVerified
@@ -398,23 +362,26 @@ export const createConversation = /* GraphQL */ `
         hashedPassword
         createdAt
         updatedAt
-        accounts {
-          nextToken
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
         }
         conversations {
           nextToken
         }
-      }
-      content
-      messages {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          conversationMessagesId
-        }
-        nextToken
+        userAccountId
       }
       createdAt
       updatedAt
@@ -429,10 +396,22 @@ export const updateConversation = /* GraphQL */ `
   ) {
     updateConversation(input: $input, condition: $condition) {
       id
-      owner
-      userId {
+      userId
+      name
+      image
+      messages {
+        items {
+          id
+          conversationId
+          content
+          createdAt
+          updatedAt
+          conversationMessagesId
+        }
+        nextToken
+      }
+      user {
         id
-        owner
         name
         email
         emailVerified
@@ -440,23 +419,26 @@ export const updateConversation = /* GraphQL */ `
         hashedPassword
         createdAt
         updatedAt
-        accounts {
-          nextToken
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
         }
         conversations {
           nextToken
         }
-      }
-      content
-      messages {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          conversationMessagesId
-        }
-        nextToken
+        userAccountId
       }
       createdAt
       updatedAt
@@ -471,28 +453,13 @@ export const deleteConversation = /* GraphQL */ `
   ) {
     deleteConversation(input: $input, condition: $condition) {
       id
-      owner
-      userId {
-        id
-        owner
-        name
-        email
-        emailVerified
-        image
-        hashedPassword
-        createdAt
-        updatedAt
-        accounts {
-          nextToken
-        }
-        conversations {
-          nextToken
-        }
-      }
-      content
+      userId
+      name
+      image
       messages {
         items {
           id
+          conversationId
           content
           createdAt
           updatedAt
@@ -500,9 +467,153 @@ export const deleteConversation = /* GraphQL */ `
         }
         nextToken
       }
+      user {
+        id
+        name
+        email
+        emailVerified
+        image
+        hashedPassword
+        createdAt
+        updatedAt
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
+        }
+        conversations {
+          nextToken
+        }
+        userAccountId
+      }
       createdAt
       updatedAt
       userConversationsId
+    }
+  }
+`;
+export const createMessage = /* GraphQL */ `
+  mutation CreateMessage(
+    $input: CreateMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    createMessage(input: $input, condition: $condition) {
+      id
+      conversationId
+      content
+      createdAt
+      conversation {
+        id
+        userId
+        name
+        image
+        messages {
+          nextToken
+        }
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
+        createdAt
+        updatedAt
+        userConversationsId
+      }
+      updatedAt
+      conversationMessagesId
+    }
+  }
+`;
+export const updateMessage = /* GraphQL */ `
+  mutation UpdateMessage(
+    $input: UpdateMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    updateMessage(input: $input, condition: $condition) {
+      id
+      conversationId
+      content
+      createdAt
+      conversation {
+        id
+        userId
+        name
+        image
+        messages {
+          nextToken
+        }
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
+        createdAt
+        updatedAt
+        userConversationsId
+      }
+      updatedAt
+      conversationMessagesId
+    }
+  }
+`;
+export const deleteMessage = /* GraphQL */ `
+  mutation DeleteMessage(
+    $input: DeleteMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    deleteMessage(input: $input, condition: $condition) {
+      id
+      conversationId
+      content
+      createdAt
+      conversation {
+        id
+        userId
+        name
+        image
+        messages {
+          nextToken
+        }
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
+        createdAt
+        updatedAt
+        userConversationsId
+      }
+      updatedAt
+      conversationMessagesId
     }
   }
 `;

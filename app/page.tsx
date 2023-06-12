@@ -2,6 +2,8 @@
 import {useState} from 'react'
 import axios from 'axios';
 import TypingAnimation from './components/TypingAnimation';
+import {AiOutlineMenuFold} from 'react-icons/ai'
+import SidebarState from "@/app/stateManagement/SidebarHook"
 
 export default function Home() {
 
@@ -55,59 +57,74 @@ export default function Home() {
   };
   console.log(messageLog)
 
+  const sidebarState = SidebarState()
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    // Parent Div
-    <div className="h-[90vh] sm:h-screen pt-20 sm:pt-16">
-      {/* Container */}
-      <div className='flex flex-col justify-between gap-10 px-6 md:px-24 sm:px-12 h-full'>
-        {/* Message Box */}
-        <div className='w-full flex-1  shadow-lg shadow-[#0d0d0d] rounded-lg p-4 overflow-y-scroll flex flex-col items-start scroll'>
-          {messageLog.map((message: MessageType, index: number) => (
-            <div key={index} className={`mb-2 flex w-full ${message.type === 'user' ? 'justify-start' : 'justify-end'}`}>
-              <div className='flex items-center gap-2 max-w-2/5'>
-                <div className='text-xs md:text-sm  text-zinc-500'>
-                  {message.type === 'user' ? 'User:' : 'Bot:'}
-                </div>
-                <p
-                  style={{whiteSpace: 'pre-line'}}
-                  className={`border-1 p-3 rounded-lg max-w-sm text-xs sm:text-sm md:text-md
+    <>
+      {isOpen && (
+        <div className='fixed transition py-4 z-20 top-0 left-0 h-full sm:h-screen w-[65vw] sm:w-[20vw] md:w-[30vw] bg-[#0d0d0d] shadow-xl shadow-[#131212]'>
+          <div className='flex flex-col p-2 border-b border-b-[#686868]'>
+
+            <div className='flex items-center justify-center flex-row gap-2'>
+              <h1 className='flex-1 text-center text-sky-200 text-2xl font-bold '>Settings</h1>
+              <AiOutlineMenuFold className=' text-sky-200 text-2xl cursor-pointer' />
+            </div>
+
+          </div>
+        </div>
+      )}
+      <div className="h-[90vh] sm:h-screen pt-20 sm:pt-16">
+        {/* Container */}
+        <div className='flex flex-col justify-between gap-10 px-6 md:px-24 sm:px-12 h-full'>
+          {/* Message Box */}
+          <div className='w-full flex-1  shadow-lg shadow-[#0d0d0d] rounded-lg p-4 overflow-y-scroll flex flex-col items-start scroll'>
+            {messageLog.map((message: MessageType, index: number) => (
+              <div key={index} className={`mb-2 flex w-full ${message.type === 'user' ? 'justify-start' : 'justify-end'}`}>
+                <div className='flex items-center gap-2 max-w-2/5'>
+                  <div className='text-xs md:text-sm  text-zinc-500'>
+                    {message.type === 'user' ? 'User:' : 'Bot:'}
+                  </div>
+                  <p
+                    style={{whiteSpace: 'pre-line'}}
+                    className={`border-1 p-3 rounded-lg max-w-sm text-xs sm:text-sm md:text-md
             ${message.type === 'user' ? 'bg-sky-600 text-white' : 'bg-neutral-700 text-white'} 
             `}
-                >
-                  {message.message}
-                </p>
-              </div>
-            </div>
-          ))}
-
-
-          {isLoading && (
-            <div className='flex justify-end mb-2 w-full'>
-              <div className='flex items-center gap-2 max-w-2/5'>
-                <div className='text-sm text-zinc-500'>Bot: </div>
-                <div className='border-1 bg-neutral-700 rounded-lg p-3 text-white'>
-                  <TypingAnimation />
+                  >
+                    {message.message}
+                  </p>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-        {/* Input Container */}
-        <div className='mb-4'>
-          <form className='flex flex-col sm:flex-row items-stretch  gap-2' onSubmit={handleSubmit}>
-            <input
-              className='flex-grow p-2 border-2 opacity-90 text-black rounded-lg w-full'
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder='Type Your Message Here' />
-            <button
-              className='bg-emerald-600 text-white p-2 rounded-lg w-full sm:w-auto'
-              type='submit'>Send</button>
-          </form>
+            ))}
+
+
+            {isLoading && (
+              <div className='flex justify-end mb-2 w-full'>
+                <div className='flex items-center gap-2 max-w-2/5'>
+                  <div className='text-sm text-zinc-500'>Bot: </div>
+                  <div className='border-1 bg-neutral-700 rounded-lg p-3 text-white'>
+                    <TypingAnimation />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          {/* Input Container */}
+          <div className='mb-4'>
+            <form className='flex flex-col sm:flex-row items-stretch  gap-2' onSubmit={handleSubmit}>
+              <input
+                className='flex-grow p-2 border-2 opacity-90 text-black rounded-lg w-full'
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder='Type Your Message Here' />
+              <button
+                className='bg-emerald-600 text-white p-2 rounded-lg w-full sm:w-auto'
+                type='submit'>Send</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

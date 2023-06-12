@@ -2,70 +2,10 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getMessage = /* GraphQL */ `
-  query GetMessage($id: ID!) {
-    getMessage(id: $id) {
-      id
-      content
-      conversation {
-        id
-        owner
-        userId {
-          id
-          owner
-          name
-          email
-          emailVerified
-          image
-          hashedPassword
-          createdAt
-          updatedAt
-        }
-        content
-        messages {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        userConversationsId
-      }
-      createdAt
-      updatedAt
-      conversationMessagesId
-    }
-  }
-`;
-export const listMessages = /* GraphQL */ `
-  query ListMessages(
-    $filter: ModelMessageFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        content
-        conversation {
-          id
-          owner
-          content
-          createdAt
-          updatedAt
-          userConversationsId
-        }
-        createdAt
-        updatedAt
-        conversationMessagesId
-      }
-      nextToken
-    }
-  }
-`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
-      owner
       name
       email
       emailVerified
@@ -73,37 +13,46 @@ export const getUser = /* GraphQL */ `
       hashedPassword
       createdAt
       updatedAt
-      accounts {
-        items {
+      account {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        user {
           id
-          owner
-          type
-          provider
-          providerAccountId
-          refresh_token
-          access_token
-          expires_at
-          token_type
-          scope
-          id_token
-          session_state
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
           createdAt
           updatedAt
-          userAccountsId
+          userAccountId
         }
-        nextToken
+        createdAt
+        updatedAt
       }
       conversations {
         items {
           id
-          owner
-          content
+          userId
+          name
+          image
           createdAt
           updatedAt
           userConversationsId
         }
         nextToken
       }
+      userAccountId
     }
   }
 `;
@@ -116,7 +65,6 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        owner
         name
         email
         emailVerified
@@ -124,12 +72,26 @@ export const listUsers = /* GraphQL */ `
         hashedPassword
         createdAt
         updatedAt
-        accounts {
-          nextToken
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
         }
         conversations {
           nextToken
         }
+        userAccountId
       }
       nextToken
     }
@@ -139,24 +101,7 @@ export const getAccount = /* GraphQL */ `
   query GetAccount($id: ID!) {
     getAccount(id: $id) {
       id
-      owner
-      userId {
-        id
-        owner
-        name
-        email
-        emailVerified
-        image
-        hashedPassword
-        createdAt
-        updatedAt
-        accounts {
-          nextToken
-        }
-        conversations {
-          nextToken
-        }
-      }
+      userId
       type
       provider
       providerAccountId
@@ -167,9 +112,38 @@ export const getAccount = /* GraphQL */ `
       scope
       id_token
       session_state
+      user {
+        id
+        name
+        email
+        emailVerified
+        image
+        hashedPassword
+        createdAt
+        updatedAt
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
+        }
+        conversations {
+          nextToken
+        }
+        userAccountId
+      }
       createdAt
       updatedAt
-      userAccountsId
     }
   }
 `;
@@ -182,18 +156,7 @@ export const listAccounts = /* GraphQL */ `
     listAccounts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        owner
-        userId {
-          id
-          owner
-          name
-          email
-          emailVerified
-          image
-          hashedPassword
-          createdAt
-          updatedAt
-        }
+        userId
         type
         provider
         providerAccountId
@@ -204,9 +167,19 @@ export const listAccounts = /* GraphQL */ `
         scope
         id_token
         session_state
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
         createdAt
         updatedAt
-        userAccountsId
       }
       nextToken
     }
@@ -216,10 +189,22 @@ export const getConversation = /* GraphQL */ `
   query GetConversation($id: ID!) {
     getConversation(id: $id) {
       id
-      owner
-      userId {
+      userId
+      name
+      image
+      messages {
+        items {
+          id
+          conversationId
+          content
+          createdAt
+          updatedAt
+          conversationMessagesId
+        }
+        nextToken
+      }
+      user {
         id
-        owner
         name
         email
         emailVerified
@@ -227,23 +212,26 @@ export const getConversation = /* GraphQL */ `
         hashedPassword
         createdAt
         updatedAt
-        accounts {
-          nextToken
+        account {
+          id
+          userId
+          type
+          provider
+          providerAccountId
+          refresh_token
+          access_token
+          expires_at
+          token_type
+          scope
+          id_token
+          session_state
+          createdAt
+          updatedAt
         }
         conversations {
           nextToken
         }
-      }
-      content
-      messages {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          conversationMessagesId
-        }
-        nextToken
+        userAccountId
       }
       createdAt
       updatedAt
@@ -260,10 +248,14 @@ export const listConversations = /* GraphQL */ `
     listConversations(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        owner
-        userId {
+        userId
+        name
+        image
+        messages {
+          nextToken
+        }
+        user {
           id
-          owner
           name
           email
           emailVerified
@@ -271,14 +263,74 @@ export const listConversations = /* GraphQL */ `
           hashedPassword
           createdAt
           updatedAt
-        }
-        content
-        messages {
-          nextToken
+          userAccountId
         }
         createdAt
         updatedAt
         userConversationsId
+      }
+      nextToken
+    }
+  }
+`;
+export const getMessage = /* GraphQL */ `
+  query GetMessage($id: ID!) {
+    getMessage(id: $id) {
+      id
+      conversationId
+      content
+      createdAt
+      conversation {
+        id
+        userId
+        name
+        image
+        messages {
+          nextToken
+        }
+        user {
+          id
+          name
+          email
+          emailVerified
+          image
+          hashedPassword
+          createdAt
+          updatedAt
+          userAccountId
+        }
+        createdAt
+        updatedAt
+        userConversationsId
+      }
+      updatedAt
+      conversationMessagesId
+    }
+  }
+`;
+export const listMessages = /* GraphQL */ `
+  query ListMessages(
+    $filter: ModelMessageFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        conversationId
+        content
+        createdAt
+        conversation {
+          id
+          userId
+          name
+          image
+          createdAt
+          updatedAt
+          userConversationsId
+        }
+        updatedAt
+        conversationMessagesId
       }
       nextToken
     }

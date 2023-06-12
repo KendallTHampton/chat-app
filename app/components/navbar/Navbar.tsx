@@ -1,26 +1,25 @@
 'use client'
 import LoginState from "@/app/stateManagement/LoginModalHook"
+import SidebarState from "@/app/stateManagement/SidebarHook"
+import {MdOutlineMenu} from 'react-icons/md'
 
 const user = false
 const Navbar = () => {
 
     const loginModalState = LoginState()
+    const sidebarState = SidebarState()
+
 
     return (
-        <div className='fixed py-2 w-full top-0 flex justify-center items-center bg-neutral-900 px-6 shadow-lg shadow-[#22222210] gap-4'>
+        <div className='fixed py-4 w-full top-0 flex justify-between items-center bg-neutral-900 px-6 shadow-lg shadow-[#22222210] gap-4'>
 
-            <h1 className='text-sky-200 text-4xl font-bold mt-2'>Chat Bot</h1>
+            <MdOutlineMenu onClick={() => sidebarState.openSidebar()} className='text-sky-200 text-2xl cursor-pointer' />
+            <h1 className='text-sky-200 text-4xl font-bold'>Chat Bot</h1>
 
-            {user ? (<></>) :
-                (
-                    <div className='flex gap-4 border rounded-lg p-2 bg-slate-200 cursor-pointer'
-                        onClick={() => loginModalState.openModal()}
-                    >
-                        Sign In
-                    </div>
-                )
+            {/* empty div */}
+            <div></div>
 
-            }
+
         </div >
     )
 }

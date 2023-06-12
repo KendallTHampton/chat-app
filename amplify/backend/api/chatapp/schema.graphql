@@ -1,47 +1,49 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-
-type User @model @auth(rules: [{allow: owner}]) {
+type User @model {
   id: ID!
-  owner: String!
   name: String
-  email: String 
-  emailVerified: Boolean 
+  email: String
+  emailVerified: AWSDateTime
   image: String
   hashedPassword: String
-  createdAt: AWSDateTime 
-  updatedAt: AWSDateTime 
-  accounts: [Account] @hasMany
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  account: Account @hasOne
   conversations: [Conversation] @hasMany
 }
 
-type Account @model @auth(rules: [{allow: owner}]) {
+type Account @model {
   id: ID!
-  owner: String!
-  userId: User @belongsTo
-  type: String
-  provider: String
-  providerAccountId: String
+  userId: ID!
+  type: String!
+  provider: String!
+  providerAccountId: String!
   refresh_token: String
   access_token: String
-  expires_at: AWSDateTime 
+  expires_at: Int
   token_type: String
   scope: String
   id_token: String
   session_state: String
+  user: User @belongsTo(fields: ["userId"])
 }
 
-type Conversation @model @auth(rules: [{allow: owner}]) {
+type Conversation @model {
   id: ID!
-  owner: String!
-  userId: User @belongsTo
-  content: String!
+  userId: ID!
+  name: String
+  image: String
   messages: [Message] @hasMany
+  user: User @belongsTo(fields: ["userId"])
 }
-
 
 type Message @model {
   id: ID!
-  content: String!
-  conversation: Conversation @belongsTo
+  conversationId: ID!
+  content: String
+  createdAt: AWSDateTime!
+  conversation: Conversation @belongsTo(fields: ["conversationId"])
 }

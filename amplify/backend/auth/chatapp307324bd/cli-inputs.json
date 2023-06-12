@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "chatappb25e6a75_identitypool_b25e6a75",
+    "identityPoolName": "chatapp307324bd_identitypool_307324bd",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "chatapb25e6a75",
-    "userPoolName": "chatappb25e6a75_userpool_b25e6a75",
+    "resourceNameTruncated": "chatap307324bd",
+    "userPoolName": "chatapp307324bd_userpool_307324bd",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "chatapb25e6a75_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "chatap307324bd_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "b25e6a75",
-    "resourceName": "chatappb25e6a75",
+    "sharedId": "307324bd",
+    "resourceName": "chatapp307324bd",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "userPoolGroupList": [],

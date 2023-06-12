@@ -1,25 +1,10 @@
 {
   "api": {
     "chatapp": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "chatappb25e6a75"
-        }
-      ],
+      "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authchatappb25e6a75"
-              }
-            }
-          ],
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "apiKeyConfig": {
               "apiKeyExpirationDays": 7
@@ -33,7 +18,7 @@
     }
   },
   "auth": {
-    "chatappb25e6a75": {
+    "chatapp307324bd": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -56,49 +41,6 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
-    }
-  },
-  "function": {
-    "chatapp86e9dd8a": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput",
-            "GraphQLAPIKeyOutput"
-          ],
-          "category": "api",
-          "resourceName": "chatapp"
-        },
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "chatappb25e6a75"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_chatapp86e9dd8a_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "chatapp86e9dd8a"
-        }
-      ]
-    },
-    "AMPLIFY_function_chatapp86e9dd8a_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "chatapp86e9dd8a"
-        }
-      ]
     }
   }
 }

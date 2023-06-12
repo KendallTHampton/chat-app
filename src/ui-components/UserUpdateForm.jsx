@@ -6,13 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import {
-  Button,
-  Flex,
-  Grid,
-  SwitchField,
-  TextField,
-} from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { User } from "../models";
 import { fetchByPath, validateField } from "./utils";
@@ -30,16 +24,14 @@ export default function UserUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    owner: "",
     name: "",
     email: "",
-    emailVerified: false,
+    emailVerified: "",
     image: "",
     hashedPassword: "",
     createdAt: "",
     updatedAt: "",
   };
-  const [owner, setOwner] = React.useState(initialValues.owner);
   const [name, setName] = React.useState(initialValues.name);
   const [email, setEmail] = React.useState(initialValues.email);
   const [emailVerified, setEmailVerified] = React.useState(
@@ -56,7 +48,6 @@ export default function UserUpdateForm(props) {
     const cleanValues = userRecord
       ? { ...initialValues, ...userRecord }
       : initialValues;
-    setOwner(cleanValues.owner);
     setName(cleanValues.name);
     setEmail(cleanValues.email);
     setEmailVerified(cleanValues.emailVerified);
@@ -78,14 +69,13 @@ export default function UserUpdateForm(props) {
   }, [idProp, userModelProp]);
   React.useEffect(resetStateValues, [userRecord]);
   const validations = {
-    owner: [{ type: "Required" }],
     name: [],
     email: [],
     emailVerified: [],
     image: [],
     hashedPassword: [],
-    createdAt: [],
-    updatedAt: [],
+    createdAt: [{ type: "Required" }],
+    updatedAt: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -130,7 +120,6 @@ export default function UserUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          owner,
           name,
           email,
           emailVerified,
@@ -185,37 +174,6 @@ export default function UserUpdateForm(props) {
       {...rest}
     >
       <TextField
-        label="Owner"
-        isRequired={true}
-        isReadOnly={false}
-        value={owner}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              owner: value,
-              name,
-              email,
-              emailVerified,
-              image,
-              hashedPassword,
-              createdAt,
-              updatedAt,
-            };
-            const result = onChange(modelFields);
-            value = result?.owner ?? value;
-          }
-          if (errors.owner?.hasError) {
-            runValidationTasks("owner", value);
-          }
-          setOwner(value);
-        }}
-        onBlur={() => runValidationTasks("owner", owner)}
-        errorMessage={errors.owner?.errorMessage}
-        hasError={errors.owner?.hasError}
-        {...getOverrideProps(overrides, "owner")}
-      ></TextField>
-      <TextField
         label="Name"
         isRequired={false}
         isReadOnly={false}
@@ -224,7 +182,6 @@ export default function UserUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              owner,
               name: value,
               email,
               emailVerified,
@@ -255,7 +212,6 @@ export default function UserUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              owner,
               name,
               email: value,
               emailVerified,
@@ -277,16 +233,17 @@ export default function UserUpdateForm(props) {
         hasError={errors.email?.hasError}
         {...getOverrideProps(overrides, "email")}
       ></TextField>
-      <SwitchField
+      <TextField
         label="Email verified"
-        defaultChecked={false}
-        isDisabled={false}
-        isChecked={emailVerified}
+        isRequired={false}
+        isReadOnly={false}
+        type="datetime-local"
+        value={emailVerified && convertToLocal(new Date(emailVerified))}
         onChange={(e) => {
-          let value = e.target.checked;
+          let value =
+            e.target.value === "" ? "" : new Date(e.target.value).toISOString();
           if (onChange) {
             const modelFields = {
-              owner,
               name,
               email,
               emailVerified: value,
@@ -307,7 +264,7 @@ export default function UserUpdateForm(props) {
         errorMessage={errors.emailVerified?.errorMessage}
         hasError={errors.emailVerified?.hasError}
         {...getOverrideProps(overrides, "emailVerified")}
-      ></SwitchField>
+      ></TextField>
       <TextField
         label="Image"
         isRequired={false}
@@ -317,7 +274,6 @@ export default function UserUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              owner,
               name,
               email,
               emailVerified,
@@ -348,7 +304,6 @@ export default function UserUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              owner,
               name,
               email,
               emailVerified,
@@ -372,7 +327,7 @@ export default function UserUpdateForm(props) {
       ></TextField>
       <TextField
         label="Created at"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         type="datetime-local"
         value={createdAt && convertToLocal(new Date(createdAt))}
@@ -381,7 +336,6 @@ export default function UserUpdateForm(props) {
             e.target.value === "" ? "" : new Date(e.target.value).toISOString();
           if (onChange) {
             const modelFields = {
-              owner,
               name,
               email,
               emailVerified,
@@ -405,7 +359,7 @@ export default function UserUpdateForm(props) {
       ></TextField>
       <TextField
         label="Updated at"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         type="datetime-local"
         value={updatedAt && convertToLocal(new Date(updatedAt))}
@@ -414,7 +368,6 @@ export default function UserUpdateForm(props) {
             e.target.value === "" ? "" : new Date(e.target.value).toISOString();
           if (onChange) {
             const modelFields = {
-              owner,
               name,
               email,
               emailVerified,
