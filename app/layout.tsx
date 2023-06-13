@@ -6,7 +6,7 @@ import {Inter} from 'next/font/google'
 import {Amplify} from 'aws-amplify'
 import config from '../src/aws-exports'
 import Sidebar from './components/sidebar/Sidebar'
-import {API} from "aws-amplify";
+
 
 
 

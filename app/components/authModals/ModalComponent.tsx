@@ -1,5 +1,4 @@
 'use client'
-
 import LoginState from "@/app/stateManagement/LoginModalHook";
 import RegisterState from "@/app/stateManagement/RegisterModalHook";
 import {useCallback, useEffect, useState} from "react";

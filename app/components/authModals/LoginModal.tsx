@@ -4,8 +4,6 @@ import {FcGoogle} from 'react-icons/fc'
 import ModalComponent from './ModalComponent'
 import LoginState from '@/app/stateManagement/LoginModalHook'
 import RegisterState from '@/app/stateManagement/RegisterModalHook'
-import {signIn} from "next-auth/react";
-import Email from 'next-auth/providers/email'
 import Button from '../Button'
 
 
@@ -16,20 +14,7 @@ const LoginModal = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    // const handleSignIn = async () => {
-    //     const result = await signIn('credentials', {
-    //         redirect: false,
-    //         email: email.trim(),
-    //         password: password.trim(),
-    //     })
 
-    //     if (!result?.error) {
-    //         LoginModalState.closeModal()
-    //     }
-    //     else {
-    //         console.log(result)
-    //     }
-    // }
 
     const loginBody = (
         <>
