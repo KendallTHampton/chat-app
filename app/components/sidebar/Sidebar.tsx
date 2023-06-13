@@ -10,6 +10,7 @@ const Sidebar = () => {
     const sidebarState = SidebarState()
     const loginModalState = LoginState()
     const RegisterModalState = RegisterState()
+
     return (
         <div className={`fixed transition-transform duration-300 ease-in-out py-4 z-20 top-0 ${sidebarState.isOpen ? 'translate-x-0' : '-translate-x-full'} h-full sm:h-screen w-[65vw] sm:w-[20vw] md:w-[30vw] bg-[#0d0d0d] shadow-xl shadow-[#131212]`}>
             {/* HEADER */}

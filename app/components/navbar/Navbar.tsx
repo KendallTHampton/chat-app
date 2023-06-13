@@ -9,7 +9,6 @@ const Navbar = () => {
     const loginModalState = LoginState()
     const sidebarState = SidebarState()
 
-    console.log(sidebarState.isOpen)
     return (
         <div className='fixed py-4 w-full top-0 flex justify-between items-center bg-neutral-900 px-6 shadow-lg shadow-[#22222210] gap-4'>
 
