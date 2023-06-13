@@ -4,6 +4,7 @@ import React from 'react'
 import {FcGoogle} from 'react-icons/fc'
 import ModalComponent from './ModalComponent'
 import LoginState from '@/app/stateManagement/LoginModalHook'
+import Button from '../Button'
 
 
 const RegisterModal = () => {
@@ -21,20 +22,19 @@ const RegisterModal = () => {
 
 
             <div className='flex flex-col gap-3 mb-4 px-6 '>
-                <button
-                    className='sm:w-[90%] w-[100%] m-auto p-2 rounded-lg bg-sky-500 text-white text-xl font-bold hover:bg-sky-800'
-                >
-                    Sign In
-                </button>
+                <Button
+                    label="Sign In"
+                    secondaryButton={false}
+                    onClick={() => console.log('hello')}
+                    disabled={false}
+                />
 
-                <button className='sm:w-[90%] w-[100%] m-auto p-2 rounded-lg bg-neutral-800 text-neutral-100 text-xl font-bold flex justify-center transition hover:bg-neutral-400'>
-
-
-                    <div className='flex gap-2 items-center'>
-                        <FcGoogle className='inline-block' />
-                        Sign In With Google
-                    </div>
-                </button>
+                <Button
+                    label='Sign In With Google'
+                    onClick={() => console.log('Sign In')}
+                    icon={FcGoogle}
+                    secondaryButton={true}
+                />
 
             </div>
         </>

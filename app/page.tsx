@@ -2,8 +2,10 @@
 import {useState} from 'react'
 import axios from 'axios';
 import TypingAnimation from './components/TypingAnimation';
-import {AiOutlineMenuFold} from 'react-icons/ai'
 import SidebarState from "@/app/stateManagement/SidebarHook"
+
+import {API} from "aws-amplify";
+
 
 export default function Home() {
 
@@ -55,25 +57,13 @@ export default function Home() {
 
     setInputValue('');
   };
-  console.log(messageLog)
+
 
   const sidebarState = SidebarState()
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
-      {isOpen && (
-        <div className='fixed transition py-4 z-20 top-0 left-0 h-full sm:h-screen w-[65vw] sm:w-[20vw] md:w-[30vw] bg-[#0d0d0d] shadow-xl shadow-[#131212]'>
-          <div className='flex flex-col p-2 border-b border-b-[#686868]'>
-
-            <div className='flex items-center justify-center flex-row gap-2'>
-              <h1 className='flex-1 text-center text-sky-200 text-2xl font-bold '>Settings</h1>
-              <AiOutlineMenuFold className=' text-sky-200 text-2xl cursor-pointer' />
-            </div>
-
-          </div>
-        </div>
-      )}
       <div className="h-[90vh] sm:h-screen pt-20 sm:pt-16">
         {/* Container */}
         <div className='flex flex-col justify-between gap-10 px-6 md:px-24 sm:px-12 h-full'>

@@ -4,9 +4,13 @@ import Navbar from './components/navbar/Navbar'
 import './globals.css'
 import {Inter} from 'next/font/google'
 import {Amplify} from 'aws-amplify'
+import config from '../src/aws-exports'
+import Sidebar from './components/sidebar/Sidebar'
+import {API} from "aws-amplify";
 
 
 
+Amplify.configure({...config, ssr: true})
 
 const inter = Inter({subsets: ['latin']})
 
@@ -16,7 +20,7 @@ export const metadata = {
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
@@ -24,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-neutral-900`}>
         <Navbar />
+        <Sidebar />
         <LoginModal />
         <RegisterModal />
         {children}

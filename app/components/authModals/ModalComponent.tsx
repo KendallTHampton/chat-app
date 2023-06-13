@@ -43,7 +43,7 @@ const ModalComponent = ({isOpen, onClose, onSubmit, modalTitle, modalBody, disab
     return (
         <div className='fixed w-full h-[100vh] bg-[#53576094] top-0 z-10 '>
             {/* MODAL */}
-            <div className={`relative top-32 md:top-40 w-[90vw] md:w-[40vw] h-[450px] rounded-lg flex gap-6 flex-col m-auto shadow-xl shadow-[#0d0d0d] translate duration-300
+            <div className={`relative top-32 md:top-40 w-[90vw] md:w-[50vw] h-[450px] rounded-lg flex gap-6 flex-col m-auto shadow-xl shadow-[#0d0d0d] translate duration-300
             ${showModal ? "translate-y-0" : "translate-y-full"} 
             ${showModal ? "opacity-100" : "opacity-0"} 
             ${LoginModalState.isOpen ? "bg-neutral-900" : "bg-white"}`}
@@ -66,7 +66,9 @@ const ModalComponent = ({isOpen, onClose, onSubmit, modalTitle, modalBody, disab
                     <div className='text-xl font-bold'>&nbsp;</div>
                 </div>
                 {/* Body / Inputs */}
-                {modalBody}
+                <form className='flex flex-col flex-1 gap-3 px-6 ' onSubmit={onSubmit}>
+                    {modalBody}
+                </form>
                 {/* Footer */}
                 {modalFooter}
             </div>

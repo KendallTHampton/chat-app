@@ -9,11 +9,21 @@ const Navbar = () => {
     const loginModalState = LoginState()
     const sidebarState = SidebarState()
 
-
+    console.log(sidebarState.isOpen)
     return (
         <div className='fixed py-4 w-full top-0 flex justify-between items-center bg-neutral-900 px-6 shadow-lg shadow-[#22222210] gap-4'>
 
-            <MdOutlineMenu onClick={() => sidebarState.openSidebar()} className='text-sky-200 text-2xl cursor-pointer' />
+            <MdOutlineMenu
+
+                onClick={() => {
+                    if (sidebarState.isOpen) {
+                        sidebarState.closeSidebar()
+                    }
+                    else {
+                        sidebarState.openSidebar()
+                    }
+
+                }} className='text-sky-200 text-2xl cursor-pointer' />
             <h1 className='text-sky-200 text-4xl font-bold'>Chat Bot</h1>
 
             {/* empty div */}
