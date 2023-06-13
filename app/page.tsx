@@ -4,7 +4,7 @@ import axios from 'axios';
 import TypingAnimation from './components/TypingAnimation';
 import SidebarState from "@/app/stateManagement/SidebarHook"
 
-import {API} from "aws-amplify";
+
 
 
 export default function Home() {
