@@ -3,7 +3,7 @@ import LoginState from "@/app/stateManagement/LoginModalHook"
 import SidebarState from "@/app/stateManagement/SidebarHook"
 import {MdOutlineMenu} from 'react-icons/md'
 
-const user = false
+const user = false;
 const Navbar = () => {
 
     const loginModalState = LoginState()
@@ -13,7 +13,6 @@ const Navbar = () => {
         <div className='fixed py-4 w-full top-0 flex justify-between items-center bg-neutral-900 px-6 shadow-lg shadow-[#22222210] gap-4'>
 
             <MdOutlineMenu
-
                 onClick={() => {
                     if (sidebarState.isOpen) {
                         sidebarState.closeSidebar()
