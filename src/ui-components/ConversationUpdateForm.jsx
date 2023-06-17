@@ -24,18 +24,15 @@ export default function ConversationUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    owner: "",
-    content: "",
+    name: "",
   };
-  const [owner, setOwner] = React.useState(initialValues.owner);
-  const [content, setContent] = React.useState(initialValues.content);
+  const [name, setName] = React.useState(initialValues.name);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = conversationRecord
       ? { ...initialValues, ...conversationRecord }
       : initialValues;
-    setOwner(cleanValues.owner);
-    setContent(cleanValues.content);
+    setName(cleanValues.name);
     setErrors({});
   };
   const [conversationRecord, setConversationRecord] = React.useState(
@@ -52,8 +49,7 @@ export default function ConversationUpdateForm(props) {
   }, [idProp, conversationModelProp]);
   React.useEffect(resetStateValues, [conversationRecord]);
   const validations = {
-    owner: [{ type: "Required" }],
-    content: [{ type: "Required" }],
+    name: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -81,8 +77,7 @@ export default function ConversationUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          owner,
-          content,
+          name,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -130,54 +125,28 @@ export default function ConversationUpdateForm(props) {
       {...rest}
     >
       <TextField
-        label="Owner"
-        isRequired={true}
+        label="Name"
+        isRequired={false}
         isReadOnly={false}
-        value={owner}
+        value={name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              owner: value,
-              content,
+              name: value,
             };
             const result = onChange(modelFields);
-            value = result?.owner ?? value;
+            value = result?.name ?? value;
           }
-          if (errors.owner?.hasError) {
-            runValidationTasks("owner", value);
+          if (errors.name?.hasError) {
+            runValidationTasks("name", value);
           }
-          setOwner(value);
+          setName(value);
         }}
-        onBlur={() => runValidationTasks("owner", owner)}
-        errorMessage={errors.owner?.errorMessage}
-        hasError={errors.owner?.hasError}
-        {...getOverrideProps(overrides, "owner")}
-      ></TextField>
-      <TextField
-        label="Content"
-        isRequired={true}
-        isReadOnly={false}
-        value={content}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              owner,
-              content: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.content ?? value;
-          }
-          if (errors.content?.hasError) {
-            runValidationTasks("content", value);
-          }
-          setContent(value);
-        }}
-        onBlur={() => runValidationTasks("content", content)}
-        errorMessage={errors.content?.errorMessage}
-        hasError={errors.content?.hasError}
-        {...getOverrideProps(overrides, "content")}
+        onBlur={() => runValidationTasks("name", name)}
+        errorMessage={errors.name?.errorMessage}
+        hasError={errors.name?.hasError}
+        {...getOverrideProps(overrides, "name")}
       ></TextField>
       <Flex
         justifyContent="space-between"

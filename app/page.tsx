@@ -2,8 +2,6 @@
 import {useState} from 'react'
 import axios from 'axios';
 import TypingAnimation from './components/TypingAnimation';
-import SidebarState from "@/app/stateManagement/SidebarHook"
-
 
 
 
@@ -59,8 +57,7 @@ export default function Home() {
   };
 
 
-  const sidebarState = SidebarState()
-  const [isOpen, setIsOpen] = useState(false)
+
 
   return (
     <>
